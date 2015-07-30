@@ -53,7 +53,7 @@ public class Main extends Application {
         fileMenu.getItems().add(newfile);
 
         MenuItem exit = new MenuItem("Exit");
-        exit.setOnAction(e -> System.out.print("Exit the program, call save dialog dialog"));
+        exit.setOnAction(e -> handleClose());
         fileMenu.getItems().add(exit);
         //View Menu
         CheckMenuItem showgrid = new CheckMenuItem("Show Grid");

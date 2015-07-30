@@ -50,6 +50,7 @@ public class ConfirmBox {
         layout.setLeft(yesButton);
         layout.setRight(noButton);
 
+
         layout.setPadding(new Insets(10,30,10,30));
 
         //layout2.getChildren().addAll(yesButton, noButton);
