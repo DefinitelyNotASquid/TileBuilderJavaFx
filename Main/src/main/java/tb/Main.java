@@ -58,18 +58,18 @@ public class Main extends Application {
         //View Menu
         CheckMenuItem showgrid = new CheckMenuItem("Show Grid");
         showgrid.setOnAction(e -> {
-          if(showgrid.isSelected())
-              System.out.println("Show the lines");
+            if (showgrid.isSelected())
+                System.out.println("Show the lines");
 
 
-          else
-              System.out.println("hide the lines");
+            else
+                System.out.println("hide the lines");
         });
         ViewMenu.getItems().add(showgrid);
 
         CheckMenuItem showlayers = new CheckMenuItem("Hide Other Layers");
         showlayers.setOnAction(e -> {
-            if(showgrid.isSelected())
+            if (showgrid.isSelected())
                 System.out.println("Set Opacity");
 
 
@@ -100,8 +100,6 @@ public class Main extends Application {
         helpMenu.getItems().add(version);
 
 
-
-
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().addAll(fileMenu, editMenu, ViewMenu, helpMenu);
 
@@ -113,11 +111,24 @@ public class Main extends Application {
         window.show();
 
 
+        //Handle Application Exit
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            handleClose();
+        });
+    }
 
-
+    private void handleClose(){
+        Boolean answer = ConfirmBox.display("Title", "Sure you want to exit?");
+        if(answer)
+            window.close();
 
     }
 
 
 
 }
+
+
+
+
