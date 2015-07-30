@@ -1,12 +1,12 @@
 package tb;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.scene.control.MenuBar;
-import java.awt.*;
 
 /**
  * Created by Someonepic on 07/30/2015.
@@ -31,23 +31,79 @@ public class Main extends Application {
         //file menu
         Menu fileMenu = new Menu("File");
         Menu editMenu = new Menu("Edit");
+        Menu ViewMenu = new Menu("View");
         Menu helpMenu = new Menu("Help");
-        //Menu items
-        fileMenu.getItems().add(new Menu("Open File..."));
-        fileMenu.getItems().add(new Menu("Save"));
-        fileMenu.getItems().add(new Menu("New"));
-        fileMenu.getItems().add(new Menu("Exit"));
 
-        editMenu.getItems().add(new Menu("Undo"));
-        editMenu.getItems().add(new Menu("Redo"));
+        //FileMenu items
+        MenuItem openfile = new MenuItem("Open File...");
+        openfile.setOnAction(e -> System.out.print("Open a file, call dialog"));
+        fileMenu.getItems().add(openfile);
+
+        MenuItem savefile = new MenuItem("Save");
+        savefile.setOnAction(e -> System.out.print("saves the file"));
+        fileMenu.getItems().add(savefile);
+
+        MenuItem saveasfile = new MenuItem("Save as...");
+        saveasfile.setOnAction(e -> System.out.print("Save as, call dialog"));
+        fileMenu.getItems().add(saveasfile);
+
+        fileMenu.getItems().add(new SeparatorMenuItem());
+        MenuItem newfile = new MenuItem("New");
+        newfile.setOnAction(e -> System.out.print("Reset File, call dialog"));
+        fileMenu.getItems().add(newfile);
+
+        MenuItem exit = new MenuItem("Exit");
+        exit.setOnAction(e -> System.out.print("Exit the program, call save dialog dialog"));
+        fileMenu.getItems().add(exit);
+        //View Menu
+        CheckMenuItem showgrid = new CheckMenuItem("ShowGrid");
+        showgrid.setOnAction(e -> {
+          if(showgrid.isSelected())
+              System.out.println("Show the lines");
 
 
-        helpMenu.getItems().add(new Menu("About"));
-        helpMenu.getItems().add(new Menu("Version"));
+          else
+              System.out.println("hide the lines");
+        });
+        ViewMenu.getItems().add(showgrid);
+
+        CheckMenuItem showlayers = new CheckMenuItem("Show Other Layers");
+        showlayers.setOnAction(e -> {
+            if(showgrid.isSelected())
+                System.out.println("Set Opacity");
+
+
+            else
+                System.out.println("Hide opacity");
+        });
+        ViewMenu.getItems().add(showlayers);
+
+
+        //Edit Menu
+
+        MenuItem undo = new MenuItem("Undo");
+        undo.setOnAction(e -> System.out.print("Redo the previous operation"));
+        editMenu.getItems().add(undo);
+
+        MenuItem redo = new MenuItem("Redo");
+        redo.setOnAction(e -> System.out.print("Undo the previous operation"));
+        editMenu.getItems().add(redo);
+
+        //Help Menu
+
+        MenuItem about = new MenuItem("About");
+        about.setOnAction(e -> System.out.print("Created by Group S"));
+        helpMenu.getItems().add(about);
+
+        MenuItem version = new MenuItem("Version");
+        version.setOnAction(e -> System.out.print("Version 1.0"));
+        helpMenu.getItems().add(version);
+
+
 
 
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(fileMenu, editMenu, helpMenu);
+        menuBar.getMenus().addAll(fileMenu, editMenu, ViewMenu, helpMenu);
 
         layout = new BorderPane();
         layout.setTop(menuBar);
