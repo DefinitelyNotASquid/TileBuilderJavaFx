@@ -56,7 +56,7 @@ public class Main extends Application {
         exit.setOnAction(e -> System.out.print("Exit the program, call save dialog dialog"));
         fileMenu.getItems().add(exit);
         //View Menu
-        CheckMenuItem showgrid = new CheckMenuItem("ShowGrid");
+        CheckMenuItem showgrid = new CheckMenuItem("Show Grid");
         showgrid.setOnAction(e -> {
           if(showgrid.isSelected())
               System.out.println("Show the lines");
@@ -67,7 +67,7 @@ public class Main extends Application {
         });
         ViewMenu.getItems().add(showgrid);
 
-        CheckMenuItem showlayers = new CheckMenuItem("Show Other Layers");
+        CheckMenuItem showlayers = new CheckMenuItem("Hide Other Layers");
         showlayers.setOnAction(e -> {
             if(showgrid.isSelected())
                 System.out.println("Set Opacity");
@@ -92,11 +92,11 @@ public class Main extends Application {
         //Help Menu
 
         MenuItem about = new MenuItem("About");
-        about.setOnAction(e -> System.out.print("Created by Group S"));
+        about.setOnAction(e -> System.out.println("Created by Group S"));
         helpMenu.getItems().add(about);
 
         MenuItem version = new MenuItem("Version");
-        version.setOnAction(e -> System.out.print("Version 1.0"));
+        version.setOnAction(e -> System.out.println("Version 1.0"));
         helpMenu.getItems().add(version);
 
 
