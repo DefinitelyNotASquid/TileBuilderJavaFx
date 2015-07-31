@@ -1,7 +1,9 @@
 package tb;
-import  javafx.scene.image.Image;
+
+import javafx.scene.image.Image;
+
 /**
- * Created by Someonepic on 07/30/2015.
+ * Created by Someonepic on 07/31/2015.
  */
 public class Tile {
 
@@ -17,6 +19,8 @@ public class Tile {
 
     Image image = null;
 
+
+
     public Tile(int number, String path, String name, String type)
     {
         this.type = type;
@@ -24,7 +28,7 @@ public class Tile {
         this.name = name;
         this.path = path;
         //System.out.println("load image" + path);
-        //this.image = new Image(path).getImage();
+        this.image = new Image(getClass().getResourceAsStream(path));
 
         if(image == null) {
             throw new RuntimeException("Could not load image" + path);
@@ -46,6 +50,12 @@ public class Tile {
         }
         this.info = info;
     }
+    /**
+     * Creates a shallow copy of the given tile.
+     * It shouldn't really be necessary to reproduce a tile, as
+     * the same tile may appear more than once in a map without
+     * causing any trouble.
+     **/
     public Tile(Tile t)
     {
         System.err.println("WARNING: Creating shallow copy of tile");
@@ -61,17 +71,7 @@ public class Tile {
         return path;
     }
 
-    public boolean equals(Tile t) {
-        if(t == null) return false;
-        if(this.number == t.number/* &&
-       this.name.equals(t.name) &&
-       this.type == t.type &&
-       this.image == t.image*/) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 
     static boolean areEqual(Tile t1, Tile t2) {
         if(t1 == null && t2 == null) {
@@ -83,23 +83,43 @@ public class Tile {
         }
     }
 
+
+    //
+
+
+    /**
+     * creates a null tile. this tile does not render itself,
+     * and has type of 99999, and name "noname".
+     */
     public Tile()
     {
         image = null;
     }
 
+    /**
+     * returns the Image that is rendered by this tile.
+     **/
     public Image getImage()
     {
         return image;
     }
+    /**
+     *returns the type of tile.
+     */
     public String getType()
     {
         return type;
     }
+    /**
+     *returns the tile's number.
+     */
     public int getNumber()
     {
         return number;
     }
+    /**
+     * returns the tile's name.
+     */
     public String getName()
     {
         return name;
@@ -111,8 +131,4 @@ public class Tile {
     public String getPath() {
         return path;
     }
-
-
-
-
 }

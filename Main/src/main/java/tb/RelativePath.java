@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * this class provides functions used to generate a relative path
+ * from two absolute paths
+ * @author David M. Howard
+ */
 public class RelativePath {
     /**
      * break a path down into individual elements and add to a list.

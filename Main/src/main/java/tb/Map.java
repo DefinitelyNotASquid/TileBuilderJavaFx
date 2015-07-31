@@ -1,12 +1,22 @@
 package tb;
 
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import java.util.*;
+import javafx.scene.image.Image;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.MouseButton;
+
+import java.util.ArrayList;
 
 /**
- * Created by Someonepic on 07/30/2015.
+ * Created by Someonepic on 07/31/2015.
  */
 public class Map {
+
 
     int tileWidth = 32;
     int tileHeight = 32;
@@ -16,12 +26,12 @@ public class Map {
 
     int viewWidth = 400;
     int viewHeight = 400;
+    GraphicsBank gfx;
 
-    ArrayList changeListeners;
 
     final static int LAYERS = 3;
-
-    Tile[][][] tiles; //ground layer
+    ArrayList changeListeners;
+    Tile[][][] tiles;
 
     public Map(int width, int height)
     {
@@ -36,12 +46,10 @@ public class Map {
         zoomWidth = tileWidth;
         zoomHeight = tileHeight;
     }
-
     public void setTile(int x, int y, int z, Tile t)
     {
         tiles[x][y][z] = t;
     }
-
     void setZoom(float z) {
         zoomWidth  = (int)(tileWidth * z);
         zoomHeight = (int)(tileHeight * z);
@@ -52,35 +60,35 @@ public class Map {
         this.viewWidth = width;
         this.viewHeight = height;
     }
-
     public int getWidth()
     {
         return tiles.length;
-    }
-    public int getHeight()
-    {
-        return tiles[0].length;
     }
     public int getTileWidth()
     {
         return tileWidth;
     }
+    public int getHeight()
+    {
+        return tiles[0].length;
+    }
     public int getTileHeight()
     {
         return tileHeight;
     }
-
-    public int getZoomWidth()
-    {
+    public int getZoomWidth() {
         return zoomWidth;
     }
-    public int getZoomHeight()
-    {
+    public int getZoomHeight() {
         return zoomHeight;
     }
     public Tile getTile(int x, int y, int z)
     {
         return tiles[x][y][z];
+    }
+    void resize(int newWidth, int newHeight)
+    {
+        resize(newWidth, newHeight, LAYERS);
     }
     void resize(int newWidth, int newHeight, int newLayers)
     {
@@ -104,7 +112,6 @@ public class Map {
         }
         tiles = newTiles;
     }
-
     void shift(int offX, int offY)
     {
         System.out.println("Shift to new offset " + offX + ", " + offY + ".");
@@ -135,7 +142,11 @@ public class Map {
             }
         }
     }
-
+    /**
+     * Provides a no-nonsense integer array version of this map.
+     * The numbers are the tile IDs.
+     * The dimensions are: x, y, layer.
+     **/
     public int[][][] toIntArray() {
         int set[][][] = new int[tiles.length][tiles[0].length][tiles[0][0].length];
         for(int x = 0; x < tiles.length; x++) {
@@ -151,10 +162,10 @@ public class Map {
         }
         return set;
     }
-    //Fill will need to fix
-   // public void setAllTiles(int[][][] set, GraphicsBank bank) {
-     //   gfx = bank;
-       // resize(tiles.length, tiles[0].length, tiles[0][0].length);
+
+    public void setAllTiles(int[][][] set, GraphicsBank bank) {
+        gfx = bank;
+        resize(tiles.length, tiles[0].length, tiles[0][0].length);
 
 		/*
 		if(set.length == tiles.length &&
@@ -162,13 +173,14 @@ public class Map {
 		   set[0][0].length == tiles[0][0].length) {
 		  */
 
-       // for(int x = 0; x < tiles.length; x++) {
-         //   for(int y = 0; y < tiles[0].length; y++) {
-           //     for(int l = 0; l < LAYERS; l++) {
-             //       tiles[x][y][l] = bank.getTile(set[x][y][l]);
-               // }
-        //    }
-       // }
+        for (int x = 0; x < tiles.length; x++) {
+            for (int y = 0; y < tiles[0].length; y++) {
+                for (int l = 0; l < LAYERS; l++) {
+                    tiles[x][y][l] = bank.getTile(set[x][y][l]);
+                }
+            }
+        }
 
+    }
 
 }
