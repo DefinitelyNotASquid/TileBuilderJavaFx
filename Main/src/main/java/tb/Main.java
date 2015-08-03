@@ -40,7 +40,6 @@ public class Main extends Application {
 
         window = primaryStage;
         window.setTitle("UNESE Javafx Tile Editor");
-
         //file menu
         Menu fileMenu = new Menu("File");
         Menu editMenu = new Menu("Edit");
@@ -97,6 +96,7 @@ public class Main extends Application {
 
 
         //Edit Menu
+
 
         MenuItem undo = new MenuItem("Undo");
         undo.setOnAction(e -> System.out.print("Redo the previous operation"));
