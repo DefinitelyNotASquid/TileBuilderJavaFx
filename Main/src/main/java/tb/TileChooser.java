@@ -71,6 +71,7 @@ public class TileChooser {
         //Set the buttons up
         HBox hb = new HBox();
         Button OpenButtons = new Button("Open...");
+        OpenButtons.setOnAction(e -> SaveDialog.Display(windows) );
         OpenButtons.setPadding(new Insets(0, 0, 0, 0));
         Button saveButtons = new Button("Save");
         saveButtons.setPadding(new Insets(0, 0, 0, 0));

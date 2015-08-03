@@ -26,7 +26,6 @@ public class Main extends Application {
     Stage window;
     BorderPane layout;
     BorderPane layout2;
-    Pane DragandDrop;
 
     public static void main(String[] args){
 
@@ -131,11 +130,9 @@ public class Main extends Application {
 
         layout = new BorderPane();
         layout2 = new BorderPane();
-        DragandDrop = new Pane();
         layout.setCenter(layout2);
         layout.setTop(menuBar);
         layout2.setTop(topbar);
-        layout2.setLeft(DragandDrop);
         Scene scene = new Scene(layout, 800, 600);
         window.setScene(scene);
         window.show();
