@@ -81,8 +81,6 @@ public class Main extends Application {
         showlayers.setOnAction(e -> {
             if (showgrid.isSelected())
                 System.out.println("Set Opacity");
-
-
             else
                 System.out.println("Hide opacity");
         });
@@ -161,7 +159,7 @@ public class Main extends Application {
         int tilesHorizontal = 32;
         int tilesVertical = 32;
 
-        int tileWH = 32;
+        int tileWH = 10;
         boolean flip = true;
 
         final Canvas canvas = new Canvas(tilesHorizontal*tileWH, tilesVertical*tileWH);
