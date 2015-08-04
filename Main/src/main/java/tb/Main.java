@@ -145,6 +145,7 @@ public class Main extends Application {
         );
 
 
+
         layout = new BorderPane();
         layout2 = new BorderPane();
         layout.setCenter(layout2);
@@ -189,14 +190,25 @@ public class Main extends Application {
                 gc.fillRect(i*tileWH, n*tileWH, tileWH, tileWH);
             }
         }
+        for(int i = 0; i < tilesHorizontal; i++){
+
+            for(int n = 0; n < tilesVertical; n++) {
+
+                gc.strokeRect(i * tileWH, n * tileWH, tileWH, tileWH);
+            }
+        }
+
 
         layout2.setCenter(sp);
         sp.setContent(canvas);
         sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        
+
         //Test Drawing an image to the canvas object
         Image testImage = new Image("https://raw.githubusercontent.com/plu/JPSimulatorHacks/master/Data/test.png");
         //gc.drawImage(testImage,50,50,500,500 );
+
         //Handle Application Exit
         window.setOnCloseRequest(e -> {
             e.consume();
