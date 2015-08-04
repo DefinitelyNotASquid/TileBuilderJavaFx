@@ -5,8 +5,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import java.awt.event.MouseListener;
-
 /**
  * Created by Jake Harris on 8/4/2015.
  */

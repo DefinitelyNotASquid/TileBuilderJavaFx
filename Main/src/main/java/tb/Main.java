@@ -2,12 +2,9 @@ package tb;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -20,7 +17,7 @@ public class Main extends Application {
     BorderPane layout2;
 
     //Make a canvas Renderer Object
-    CanvasRenderer cR = new CanvasRenderer();
+    CanvasRenderer cR = new CanvasRenderer(50,50);
 
     public static void main(String[] args){
 
@@ -125,7 +122,7 @@ public class Main extends Application {
         X.setPromptText("X");
         Y.setPromptText("Y");
         X.setPrefSize(10,10);
-        Y.setPrefSize(10,10);
+        Y.setPrefSize(10, 10);
         X.setMaxSize(10,10);
         Y.setMaxSize(10, 10);
 
@@ -152,6 +149,7 @@ public class Main extends Application {
         layout.setCenter(layout2);
         layout.setTop(menuBar);
         layout2.setTop(topbar);
+        layout2.setCenter(sp);
         Scene scene = new Scene(layout, 800, 600);
         window.setScene(scene);
         window.show();
@@ -168,9 +166,11 @@ public class Main extends Application {
 
 
         //Loop for drawing the canvas
+        sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         cR.drawCheckerBoard();
         cR.drawGridLines();
-        layout2.setCenter(cR.getCanvas());
+        sp.setContent(cR.getCanvas());
 
 
         //Test Drawing an image to the canvas object
