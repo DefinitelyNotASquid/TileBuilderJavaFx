@@ -6,6 +6,9 @@ import java.util.List;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Parent;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -40,6 +43,8 @@ public class Main extends Application {
         //Set up the Confirm box object to handle close requests
         ConfirmBox confirmBox = new ConfirmBox();
 
+
+
         window = primaryStage;
         window.setTitle("UNESE Javafx Tile Editor");
         //file menu
@@ -50,7 +55,7 @@ public class Main extends Application {
 
         //FileMenu items
         MenuItem openfile = new MenuItem("Open File...");
-        openfile.setOnAction(e -> fileDialog.Displayopen(window) );
+        openfile.setOnAction(e -> fileDialog.Displayopen(window));
         fileMenu.getItems().add(openfile);
 
         MenuItem savefile = new MenuItem("Save");
@@ -140,6 +145,15 @@ public class Main extends Application {
         window.setScene(scene);
         window.show();
 
+        //Set up the Canvas for the Editor
+        final Canvas canvas = new Canvas(1000,1000);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.BLUE);
+        layout2.setCenter(canvas);
+
+        //Test Drawing an image to the canvas object
+        Image testImage = new Image("https://raw.githubusercontent.com/plu/JPSimulatorHacks/master/Data/test.png");
+        gc.drawImage(testImage,50,50,500,700 );
 
         //Handle Application Exit
         window.setOnCloseRequest(e -> {
