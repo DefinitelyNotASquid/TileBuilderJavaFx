@@ -64,7 +64,7 @@ public class Main extends Application {
         fileMenu.getItems().add(newfile);
 
         MenuItem exit = new MenuItem("Exit");
-        exit.setOnAction(e -> Main.handleClose());
+        exit.setOnAction(e -> handleClose());
         fileMenu.getItems().add(exit);
         //View Menu
         MenuItem ShowTileBar = new MenuItem("Tile bar");
@@ -144,8 +144,8 @@ public class Main extends Application {
     }
 
 
-    public void handleClose(String Title){
-        Boolean answer = ConfirmBox.display(Title, "Sure you want to exit?");
+    public void handleClose(){
+        Boolean answer = ConfirmBox.display("Title" , "Sure you want to exit?");
         if(answer)
             window.close();
 

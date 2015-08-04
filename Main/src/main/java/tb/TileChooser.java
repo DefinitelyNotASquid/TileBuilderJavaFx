@@ -31,6 +31,7 @@ public class TileChooser {
     Stage windows;
     GridPane layout;
     GraphicsBank gfx;
+    static boolean answer;
 
 
 
@@ -59,7 +60,7 @@ public class TileChooser {
         }
 
     }
-    public static boolean display(String title) {
+    public static boolean display(String title){
 
 
         Stage windows = new Stage();
@@ -70,12 +71,12 @@ public class TileChooser {
         //Set the buttons up
         HBox hb = new HBox();
         Button OpenButtons = new Button("Open...");
-        OpenButtons.setOnAction(e -> fileDialog.Displayopen(windows));
+        OpenButtons.setOnAction(e -> fileDialog.Displayopen(windows) );
         OpenButtons.setPadding(new Insets(0, 0, 0, 0));
 
         Button saveButtons = new Button("Save");
 
-        saveButtons.setOnAction(e -> fileDialog.Displaysave(windows));
+        saveButtons.setOnAction(e -> fileDialog.Displaysave(windows) );
         saveButtons.setPadding(new Insets(0, 0, 0, 0));
 
         Button ClearButtons = new Button("Clear");
@@ -84,16 +85,16 @@ public class TileChooser {
         tilelayout.setTop(hb);
 
 
+
         hb.getChildren().addAll(OpenButtons, saveButtons, ClearButtons);
         Scene scene = new Scene(tilelayout, 250, 600);
         windows.setScene(scene);
 
         windows.show();
-        windows.setOnCloseRequest(e -> {
-            e.consume();
-            Main.handleClose();
-        });
 
+        return answer;
+
+    }
 
 
     }
