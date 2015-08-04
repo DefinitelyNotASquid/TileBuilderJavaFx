@@ -37,6 +37,9 @@ public class Main extends Application {
 
     public void start (Stage primaryStage) throws Exception {
 
+        //Set up the Confirm box object to handle close requests
+        ConfirmBox confirmBox = new ConfirmBox();
+
         window = primaryStage;
         window.setTitle("UNESE Javafx Tile Editor");
         //file menu
@@ -64,7 +67,7 @@ public class Main extends Application {
         fileMenu.getItems().add(newfile);
 
         MenuItem exit = new MenuItem("Exit");
-        exit.setOnAction(e -> handleClose());
+        exit.setOnAction(e -> confirmBox.handleClose(window, "Sure you want to close", "You feeling like closing?"));
         fileMenu.getItems().add(exit);
         //View Menu
         MenuItem ShowTileBar = new MenuItem("Tile bar");
@@ -136,22 +139,14 @@ public class Main extends Application {
         Scene scene = new Scene(layout, 800, 600);
         window.setScene(scene);
         window.show();
+
+
         //Handle Application Exit
         window.setOnCloseRequest(e -> {
             e.consume();
-            handleClose();
+            confirmBox.handleClose(window, "You quitting on me?", "Sure you want to exit?");
         });
     }
-
-
-    public void handleClose(){
-        Boolean answer = ConfirmBox.display("Title" , "Sure you want to exit?");
-        if(answer)
-            window.close();
-
-    }
-
-
 
 }
 

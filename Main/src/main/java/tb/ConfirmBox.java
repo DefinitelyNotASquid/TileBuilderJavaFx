@@ -18,10 +18,12 @@ import javafx.stage.Stage;
  * Created by JakeSuper on 30/07/2015.
  */
 public class ConfirmBox {
-    static boolean answer;
+    private boolean answer;
 
 
-    public static boolean display(String title, String message){
+    public boolean displayGetAnswer(String title, String message){
+
+
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
@@ -36,6 +38,8 @@ public class ConfirmBox {
         //Set the buttons up
         Button yesButton = new Button("Yes");
         Button noButton = new Button("No");
+
+        
 
         yesButton.setOnAction(e -> {
             answer = true;
@@ -62,7 +66,14 @@ public class ConfirmBox {
         return answer;
     }
 
+    public void handleClose(Stage window, String Title, String Message){
+        ConfirmBox box = new ConfirmBox();
+        boolean close = box.displayGetAnswer(Title, Message);
+        if(close){
+            window.close();
 
+        }
 
+    }
 
 }
