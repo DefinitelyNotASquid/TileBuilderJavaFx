@@ -121,6 +121,14 @@ public class Main extends Application {
         Button Set = new Button("Set");
         ToggleButton Fill = new ToggleButton("Fill");
         Button Something = new Button("Something");
+        TextArea X = new TextArea();
+        TextArea Y = new TextArea();
+        X.setPromptText("X");
+        Y.setPromptText("Y");
+        X.setPrefSize(10,10);
+        Y.setPrefSize(10,10);
+        X.setMaxSize(10,10);
+        Y.setMaxSize(10,10);
 
         ToolBar topbar = new ToolBar();
         topbar.getItems().addAll(
@@ -132,7 +140,10 @@ public class Main extends Application {
                 new Separator(),
                 Something,
                 new Separator(),
-                Set
+                Set,
+                new Separator(),
+                X,
+                Y
         );
 
 

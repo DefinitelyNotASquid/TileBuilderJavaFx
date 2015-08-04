@@ -56,21 +56,26 @@ public class TileChooser {
 
 
         Button OpenButtons = new Button("Open...");
-        OpenButtons.setOnAction(e -> fileDialog.Displayopen(windows) );
+        OpenButtons.setOnAction(e -> fileDialog.Displayopen(windows));
 
         Button saveButtons = new Button("Save");
 
-        saveButtons.setOnAction(e -> fileDialog.Displaysave(windows) );
+        saveButtons.setOnAction(e -> fileDialog.Displaysave(windows));
 
+        Button Tpbuttons = new Button("Tile Info");
+        Tpbuttons.setOnAction(e -> PropertiesDialog.displayTile("Tile Properties"));
         Button ClearButtons = new Button("Clear");
-        ClearButtons.setOnAction(e -> PropertiesDialog.displayTile("Tile Properties"));
+        ClearButtons.setOnAction(e -> System.out.print("Clear the Tileset"));
+
         ToolBar tilebar = new ToolBar();
         tilebar.getItems().addAll(
                 OpenButtons,
                 new Separator(),
                 saveButtons,
                 new Separator(),
-                ClearButtons
+                ClearButtons,
+                new Separator(),
+                Tpbuttons
         );
 
 
