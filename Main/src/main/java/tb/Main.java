@@ -153,18 +153,18 @@ public class Main extends Application {
 
         for(int i = 0; i < tilesHorizontal; i++){
             if (flip) {
-                gc.setFill(Color.WHEAT);
+                gc.setFill(Color.BLACK);
                 flip = false;
             } else {
-                gc.setFill(Color.AQUAMARINE);
+                gc.setFill(Color.web("#FF00DC"));
                 flip = true;
             }
             for(int n = 0; n < tilesVertical; n++) {
                 if (flip) {
-                    gc.setFill(Color.WHEAT);
+                    gc.setFill(Color.BLACK);
                     flip = false;
                 } else {
-                    gc.setFill(Color.AQUAMARINE);
+                    gc.setFill(Color.web("#FF00DC"));
                     flip = true;
                 }
                 gc.fillRect(i*tileWH, n*tileWH, tileWH, tileWH);

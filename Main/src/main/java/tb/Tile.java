@@ -83,10 +83,6 @@ public class Tile {
         }
     }
 
-
-    //
-
-
     /**
      * creates a null tile. this tile does not render itself,
      * and has type of 99999, and name "noname".
@@ -124,7 +120,6 @@ public class Tile {
     {
         return name;
     }
-
     public String getInfo() {
         return info;
     }
