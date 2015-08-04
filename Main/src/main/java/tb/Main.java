@@ -161,7 +161,7 @@ public class Main extends Application {
         int tilesHorizontal = 32;
         int tilesVertical = 32;
 
-        int tileWH = 10;
+        int tileWH = 32;
         boolean flip = true;
 
         final Canvas canvas = new Canvas(tilesHorizontal*tileWH, tilesVertical*tileWH);
