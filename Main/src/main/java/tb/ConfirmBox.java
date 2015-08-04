@@ -4,13 +4,10 @@ package tb;
  * Created by JakeSuper on 30/07/2015.
  */
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -50,7 +47,7 @@ public class ConfirmBox {
             window.close();
         });
 
-        HBox layout2 = new HBox(30);
+        //HBox layout2 = new HBox(30);
         BorderPane layout = new BorderPane();
         layout.setTop(label);
         layout.setLeft(yesButton);

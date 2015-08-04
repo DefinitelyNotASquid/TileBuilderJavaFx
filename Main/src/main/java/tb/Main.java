@@ -1,24 +1,14 @@
 package tb;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
-import javafx.scene.Parent;
+import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -132,7 +122,7 @@ public class Main extends Application {
         Button Set = new Button("Set");
         ToggleButton Fill = new ToggleButton("Fill");
         Button Something = new Button("Zoom in");
-        topbar.getChildren().addAll(Zoomin,Zoomout, Fill, Something,Set);
+        topbar.getChildren().addAll(Zoomin, Zoomout, Fill, Something,Set);
 
 
 
@@ -153,7 +143,7 @@ public class Main extends Application {
 
         //Test Drawing an image to the canvas object
         Image testImage = new Image("https://raw.githubusercontent.com/plu/JPSimulatorHacks/master/Data/test.png");
-        gc.drawImage(testImage,50,50,500,700 );
+        gc.drawImage(testImage,50,50,500,500 );
 
         //Handle Application Exit
         window.setOnCloseRequest(e -> {

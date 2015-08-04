@@ -1,38 +1,21 @@
 package tb;
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.jmx.MXNodeAlgorithm;
-import com.sun.javafx.jmx.MXNodeAlgorithmContext;
-import com.sun.javafx.sg.prism.NGNode;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.geometry.*;
-import java.util.Iterator;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
 
 /**
  * Created by Someonepic on 07/31/2015.
  */
 public class TileChooser {
-    Stage windows;
-    GridPane layout;
-    GraphicsBank gfx;
     static boolean answer;
-
 
 
 
@@ -80,6 +63,7 @@ public class TileChooser {
         saveButtons.setPadding(new Insets(0, 0, 0, 0));
 
         Button ClearButtons = new Button("Clear");
+        ClearButtons.setOnAction(e -> PropertiesDialog.displayTile("Tile Properties") );
         ClearButtons.setPadding(new Insets(0, 0, 0, 0));
         hb.setPadding(new Insets(0, 0, 100, 62.5));
         tilelayout.setTop(hb);
@@ -92,8 +76,12 @@ public class TileChooser {
 
         windows.show();
 
-        return answer;
 
+
+
+
+
+        return answer;
     }
 
 
