@@ -182,6 +182,14 @@ public class Main extends Application {
             }
         }
 
+        for(int i = 0; i < tilesHorizontal; i++){
+
+            for(int n = 0; n < tilesVertical; n++) {
+
+                gc.strokeRect(i*tileWH, n*tileWH, tileWH, tileWH);
+            }
+        }
+
         layout2.setCenter(canvas);
 
         //Test Drawing an image to the canvas object
