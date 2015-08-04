@@ -47,7 +47,7 @@ public class Main extends Application {
 
         //FileMenu items
         MenuItem openfile = new MenuItem("Open File...");
-        openfile.setOnAction(e -> SaveDialog.Display(window) );
+        openfile.setOnAction(e -> fileDialog.Displayopen(window) );
         fileMenu.getItems().add(openfile);
 
         MenuItem savefile = new MenuItem("Save");
@@ -55,7 +55,7 @@ public class Main extends Application {
         fileMenu.getItems().add(savefile);
 
         MenuItem saveasfile = new MenuItem("Save as...");
-        saveasfile.setOnAction(e -> System.out.print("Save as, call dialog"));
+        saveasfile.setOnAction(e -> fileDialog.Displaysave(window));
         fileMenu.getItems().add(saveasfile);
 
         fileMenu.getItems().add(new SeparatorMenuItem());
@@ -64,7 +64,7 @@ public class Main extends Application {
         fileMenu.getItems().add(newfile);
 
         MenuItem exit = new MenuItem("Exit");
-        exit.setOnAction(e -> handleClose());
+        exit.setOnAction(e -> Main.handleClose());
         fileMenu.getItems().add(exit);
         //View Menu
         MenuItem ShowTileBar = new MenuItem("Tile bar");
@@ -144,8 +144,8 @@ public class Main extends Application {
     }
 
 
-    private void handleClose(){
-        Boolean answer = ConfirmBox.display("Title", "Sure you want to exit?");
+    public void handleClose(String Title){
+        Boolean answer = ConfirmBox.display(Title, "Sure you want to exit?");
         if(answer)
             window.close();
 
