@@ -19,6 +19,9 @@ public class Main extends Application {
     BorderPane layout;
     BorderPane layout2;
 
+    //Make a canvas Renderer Object
+    CanvasRenderer cR = new CanvasRenderer();
+
     public static void main(String[] args){
 
         launch(args);
@@ -162,46 +165,12 @@ public class Main extends Application {
         int tileWH = 10;
         boolean flip = true;
 
-        final Canvas canvas = new Canvas(tilesHorizontal*tileWH, tilesVertical*tileWH);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
 
 
         //Loop for drawing the canvas
-
-
-        for(int i = 0; i < tilesHorizontal; i++){
-            if (flip) {
-                gc.setFill(Color.BLACK);
-                flip = false;
-            } else {
-                gc.setFill(Color.web("#FF00DC"));
-                flip = true;
-            }
-            for(int n = 0; n < tilesVertical; n++) {
-                if (flip) {
-                    gc.setFill(Color.BLACK);
-                    flip = false;
-                } else {
-                    gc.setFill(Color.web("#FF00DC"));
-                    flip = true;
-                }
-                gc.fillRect(i*tileWH, n*tileWH, tileWH, tileWH);
-            }
-        }
-        for(int i = 0; i < tilesHorizontal; i++){
-
-            for(int n = 0; n < tilesVertical; n++) {
-
-                gc.strokeRect(i * tileWH, n * tileWH, tileWH, tileWH);
-            }
-        }
-
-
-        layout2.setCenter(sp);
-        sp.setContent(canvas);
-        sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        
+        cR.drawCheckerBoard();
+        layout2.setCenter(cR.getCanvas());
+        cR.drawCheckerBoard();
 
         //Test Drawing an image to the canvas object
         Image testImage = new Image("https://raw.githubusercontent.com/plu/JPSimulatorHacks/master/Data/test.png");
