@@ -7,7 +7,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -116,13 +115,25 @@ public class Main extends Application {
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().addAll(fileMenu, editMenu, ViewMenu, helpMenu);
 
-        HBox topbar = new HBox();
+
         Button Zoomin = new Button("Zoom in");
         Button Zoomout = new Button("Zoom out");
         Button Set = new Button("Set");
         ToggleButton Fill = new ToggleButton("Fill");
-        Button Something = new Button("Zoom in");
-        topbar.getChildren().addAll(Zoomin, Zoomout, Fill, Something,Set);
+        Button Something = new Button("Something");
+
+        ToolBar topbar = new ToolBar();
+        topbar.getItems().addAll(
+                Zoomin,
+                new Separator(),
+                Zoomout,
+                new Separator(),
+                Fill,
+                new Separator(),
+                Something,
+                new Separator(),
+                Set
+        );
 
 
 
