@@ -45,6 +45,8 @@ public class CanvasRenderer{
     }
 
     CanvasRenderer(int width, int height, int tileWidth, int tileHeight){
+        this.tileHeight = tileHeight;
+        this.tileWidth = tileWidth;
         this.width = width;
         this.height = height;
         this.canvas = new Canvas(width*tileWidth, height*tileHeight);
@@ -85,6 +87,11 @@ public class CanvasRenderer{
                 gc.strokeRect(i * tileWidth, n * tileHeight, tileWidth, tileHeight);
             }
         }
+    }
+
+    public void drawSquare(int x, int y, int w, int h){
+        gc.fillRect(x,y,w,h);
+
     }
 
     public Canvas getCanvas(){

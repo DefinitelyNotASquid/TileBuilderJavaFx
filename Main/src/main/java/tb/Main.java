@@ -169,8 +169,9 @@ public class Main extends Application {
 
         //Loop for drawing the canvas
         cR.drawCheckerBoard();
+        cR.drawGridLines();
         layout2.setCenter(cR.getCanvas());
-        cR.drawCheckerBoard();
+
 
         //Test Drawing an image to the canvas object
         Image testImage = new Image("https://raw.githubusercontent.com/plu/JPSimulatorHacks/master/Data/test.png");
