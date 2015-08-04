@@ -31,9 +31,7 @@ public class Main extends Application {
 
         //Set up the Confirm box object to handle close requests
         ConfirmBox confirmBox = new ConfirmBox();
-
-
-
+        ScrollPane sp = new ScrollPane();
         window = primaryStage;
         window.setTitle("UNESE Javafx Tile Editor");
         //file menu
@@ -128,7 +126,7 @@ public class Main extends Application {
         X.setPrefSize(10,10);
         Y.setPrefSize(10,10);
         X.setMaxSize(10,10);
-        Y.setMaxSize(10,10);
+        Y.setMaxSize(10, 10);
 
         ToolBar topbar = new ToolBar();
         topbar.getItems().addAll(
@@ -147,7 +145,6 @@ public class Main extends Application {
         );
 
 
-
         layout = new BorderPane();
         layout2 = new BorderPane();
         layout.setCenter(layout2);
@@ -163,7 +160,7 @@ public class Main extends Application {
         int tilesHorizontal = 32;
         int tilesVertical = 32;
 
-        int tileWH = 32;
+        int tileWH = 10;
         boolean flip = true;
 
         final Canvas canvas = new Canvas(tilesHorizontal*tileWH, tilesVertical*tileWH);
@@ -193,12 +190,13 @@ public class Main extends Application {
             }
         }
 
-        layout2.setCenter(canvas);
-
+        layout2.setCenter(sp);
+        sp.setContent(canvas);
+        sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         //Test Drawing an image to the canvas object
         Image testImage = new Image("https://raw.githubusercontent.com/plu/JPSimulatorHacks/master/Data/test.png");
         //gc.drawImage(testImage,50,50,500,500 );
-
         //Handle Application Exit
         window.setOnCloseRequest(e -> {
             e.consume();
