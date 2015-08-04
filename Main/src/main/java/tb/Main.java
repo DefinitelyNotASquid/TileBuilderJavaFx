@@ -136,14 +136,46 @@ public class Main extends Application {
         window.show();
 
         //Set up the Canvas for the Editor
-        final Canvas canvas = new Canvas(1000,1000);
+
+        //Set up some variables for the Canvas
+        int tilesHorizontal = 32;
+        int tilesVertical = 32;
+
+        int tileWH = 32;
+        boolean flip = true;
+
+        final Canvas canvas = new Canvas(tilesHorizontal*tileWH, tilesVertical*tileWH);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.BLUE);
+
+
+        //Loop for drawing the canvas
+
+
+        for(int i = 0; i < tilesHorizontal; i++){
+            if (flip) {
+                gc.setFill(Color.WHEAT);
+                flip = false;
+            } else {
+                gc.setFill(Color.AQUAMARINE);
+                flip = true;
+            }
+            for(int n = 0; n < tilesVertical; n++) {
+                if (flip) {
+                    gc.setFill(Color.WHEAT);
+                    flip = false;
+                } else {
+                    gc.setFill(Color.AQUAMARINE);
+                    flip = true;
+                }
+                gc.fillRect(i*tileWH, n*tileWH, tileWH, tileWH);
+            }
+        }
+
         layout2.setCenter(canvas);
 
         //Test Drawing an image to the canvas object
         Image testImage = new Image("https://raw.githubusercontent.com/plu/JPSimulatorHacks/master/Data/test.png");
-        gc.drawImage(testImage,50,50,500,500 );
+        //gc.drawImage(testImage,50,50,500,500 );
 
         //Handle Application Exit
         window.setOnCloseRequest(e -> {
