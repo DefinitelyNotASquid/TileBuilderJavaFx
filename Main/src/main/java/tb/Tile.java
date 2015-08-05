@@ -28,7 +28,9 @@ public class Tile {
         this.name = name;
         this.path = path;
         //System.out.println("load image" + path);
-        this.image = new Image(getClass().getResourceAsStream(path));
+        //this.image = new Image(getClass().getResourceAsStream(path)); //Commented out by Jake for experimenting
+        this.image = new Image(path);
+
 
         if(image == null) {
             throw new RuntimeException("Could not load image" + path);

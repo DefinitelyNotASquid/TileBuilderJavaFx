@@ -4,19 +4,25 @@ package tb;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.InputEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
 
 
 /**
  * Created by Jake Harris on 8/4/2015.
  */
-public class CanvasRenderer{
+public class CanvasRenderer {
     private int width = 0;
     private int height = 0;
     private int tileWidth = 0;
     private int tileHeight = 0;
+
+    int[][] tiles; //Array that holds the tiles
+
 
 //    private int defaultTileWidth = 32;
 //    private int defaultTileHeight = 32;
@@ -36,31 +42,42 @@ public class CanvasRenderer{
     private GraphicsContext gc;
     private Canvas canvas;
 
-    CanvasRenderer(){
+    GraphicsBank testBank = new GraphicsBank();
+    Tile testTile = new Tile(2, "http://i189.photobucket.com/albums/z275/Blaquage/Tree.png","tree2","tree");
+
+
+    CanvasRenderer() {
         this(10, 10, 32, 32);
 
     }
 
-    CanvasRenderer(int width, int height){
+    CanvasRenderer(int width, int height) {
         this(width, height, 32, 32);
 
     }
 
-    CanvasRenderer(int width, int height, int tileWidth, int tileHeight){
+    CanvasRenderer(int width, int height, int tileWidth, int tileHeight) {
         this.tileHeight = tileHeight;
         this.tileWidth = tileWidth;
         this.width = width;
         this.height = height;
-        this.canvas = new Canvas(width*tileWidth, height*tileHeight);
+        this.canvas = new Canvas(width * tileWidth, height * tileHeight);
         this.gc = canvas.getGraphicsContext2D();
+
+        tiles = new int[width][height];
+        clearTiles(tiles);
+
+
+
 
         this.canvas.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                double tileX = Math.floor(event.getX()/tileWidth) + 1;
-                double tileY = Math.floor(event.getY()/tileHeight)+ 1;
+                double tileX = Math.floor(event.getX() / tileWidth);
+                double tileY = Math.floor(event.getY() / tileHeight);
+                drawImage(tileX,tileY);
+                System.out.println("X: " + tileX + ", Y:" + tileY);
 
-               System.out.println("X: " + tileX + ", Y:" + tileY);
             }
         });
 
@@ -101,15 +118,59 @@ public class CanvasRenderer{
         }
     }
 
-    public void drawSquare(int x, int y, int w, int h){
-        gc.fillRect(x,y,w,h);
+    public void clearTiles(int[][] tiles) {
+        for (int i = 0; i < width; i++) {
+            for (int n = 0; n < height; n++) {
+                tiles[i][n] = 0;
+
+            }
+        }
+    }
+
+//    public void drawMap(int[][] tiles GraphicsBank gb) {
+//        for (int i = 0; i < width; i++) {
+//            for (int n = 0; n < height; n++) {
+//                gc.drawImage(testTile.getImage(),);
+//
+//            }
+//        }
+//
+//    }
+
+    public void drawImage(double X, double Y){
+        gc.drawImage(testTile.getImage(),X*tileWidth,Y*tileHeight);
 
     }
 
-    public Canvas getCanvas(){
+    public void drawSquare(int x, int y, int w, int h) {
+        gc.fillRect(x, y, w, h);
+
+    }
+
+//    public void update() {
+//        if(showGrid){
+//            drawGridLines();
+//        }
+//
+//        drawMap(tiles);
+//    }
+
+    public Canvas getCanvas() {
         return this.canvas;
 
     }
+
+    public void setShowGrid(boolean setTrue) {
+        if (setTrue) {
+            showGrid = true;
+        } else
+            showGrid = false;
+    }
+
+
+
+
+
 
     public GraphicsContext getGraphicContext(){
         return this.gc;
