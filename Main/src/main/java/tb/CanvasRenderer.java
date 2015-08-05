@@ -1,9 +1,13 @@
 package tb;
 
 
+import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+
 
 /**
  * Created by Jake Harris on 8/4/2015.
@@ -18,9 +22,9 @@ public class CanvasRenderer{
 //    private int defaultTileHeight = 32;
 
     private int activeLayer = 0;
-    boolean hideLayers = false;
-    boolean showGrid = true;
-    boolean stateChanged = false;
+    private boolean hideLayers = false;
+    private boolean showGrid = true;
+    private boolean stateChanged = false;
 
     int grabX = 0;
     int grabY = 0;
@@ -29,8 +33,8 @@ public class CanvasRenderer{
     int offsetX = 0;
     int offsetY = 0;
 
-    GraphicsContext gc;
-    Canvas canvas;
+    private GraphicsContext gc;
+    private Canvas canvas;
 
     CanvasRenderer(){
         this(10, 10, 32, 32);
@@ -49,6 +53,16 @@ public class CanvasRenderer{
         this.height = height;
         this.canvas = new Canvas(width*tileWidth, height*tileHeight);
         this.gc = canvas.getGraphicsContext2D();
+
+        this.canvas.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double tileX = Math.floor(event.getX()/tileWidth) + 1;
+                double tileY = Math.floor(event.getY()/tileHeight)+ 1;
+
+               System.out.println("X: " + tileX + ", Y:" + tileY);
+            }
+        });
 
     }
 
