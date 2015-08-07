@@ -152,11 +152,11 @@ public class CanvasRenderer {
     public void updateGraphics() {
         int y = 0;
         int x = 0;
-        for(int Z = 0; Z < tiles[x][y][2]; Z++){
-            for(x = 0; x < tiles[width][y][Z]; x++){
-                for(y = 0; y < tiles[x][height][Z]; y++) {
+        for(int Z = 0; Z < 2; Z++){
+            for(x = 0; x < width; x++){
+                for(y = 0; y < height; y++) {
                     //Draw Image from the Array Here
-                    System.out.println("Drew Tile X:" + x + "Y: " +y + "Z: " + Z);
+                    System.out.println("Drew Tile X:" + x + " Y: " +y + " Z: " + Z);
                 }
             }
         }
