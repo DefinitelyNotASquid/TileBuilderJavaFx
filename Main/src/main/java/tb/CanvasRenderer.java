@@ -79,9 +79,9 @@ public class CanvasRenderer {
         this.canvas.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                double tileX = Math.floor(event.getX() / tileWidth);
-                double tileY = Math.floor(event.getY() / tileHeight);
-                drawImage(tileX,tileY);
+                int tileX = (int)(Math.floor(event.getX() / tileWidth));
+                int tileY = (int)(Math.floor(event.getY() / tileHeight));
+                drawImage(1,tileX,tileY,1);
                 System.out.println("X: " + tileX + ", Y:" + tileY);
 
             }
@@ -140,11 +140,11 @@ public class CanvasRenderer {
 //
 //            }
 //        }
-//
 //    }
 
-    public void drawImage(double X, double Y){
-        gc.drawImage(testTile.getImage(),((X*tileWidth) - testTile.getImageWidth()) + tileWidth,((Y*tileHeight) - testTile.getImageHeight() +tileHeight));
+    public void drawImage(int ID ,int X, int Y, int Z){
+        //gc.drawImage(testTile.getImage(),((X*tileWidth) - testTile.getImageWidth()) + tileWidth,((Y*tileHeight) - testTile.getImageHeight() +tileHeight));
+        tiles[X][Y][Z] = ID;
         updateGraphics();
 
     }
@@ -159,6 +159,7 @@ public class CanvasRenderer {
         if(drawCheckerBoard){
             drawCheckerBoard();
         }
+
         int tileToDraw = 0;
         int y = 0;
         int x = 0;
@@ -167,7 +168,7 @@ public class CanvasRenderer {
                 for(y = 0; y < height; y++) {
                     tileToDraw = tiles[x][y][Z];
                     gc.drawImage(gb.getTile(tileToDraw).getImage(), x*tileWidth, y*tileHeight );
-                    System.out.println("Drew Tile X:" + x + " Y: " + y + " Z: " + Z);
+                    System.out.println("Drew Tile X: " + x + " Y: " + y + " Z: " + Z);
                 }
             }
         }
