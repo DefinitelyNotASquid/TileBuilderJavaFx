@@ -101,6 +101,14 @@ public class Tile {
     {
         return image;
     }
+
+    public double getImageWidth(){
+        return image.getWidth();
+    }
+
+    public  double getImageHeight(){
+        return image.getHeight();
+    }
     /**
      *returns the type of tile.
      */

@@ -30,6 +30,7 @@ public class CanvasRenderer {
     private int activeLayer = 0;
     private boolean hideLayers = false;
     private boolean showGrid = true;
+    private boolean drawCheckerBoard = true;
     private boolean stateChanged = false;
 
     int grabX = 0;
@@ -43,7 +44,7 @@ public class CanvasRenderer {
     private Canvas canvas;
 
     GraphicsBank testBank = new GraphicsBank();
-    Tile testTile = new Tile(2, "http://i189.photobucket.com/albums/z275/Blaquage/Tree.png","tree2","tree");
+    Tile testTile = new Tile(2, "tree.png","tree2","tree");
 
 
     CanvasRenderer() {
@@ -147,12 +148,27 @@ public class CanvasRenderer {
 
     }
 
-//    public void update() {
+//    public void updateGraphics() {
+//
+//
+//        for(){
+//            for{
+//                for (){
+//
+//                }
+//            }
+//        }
+//
+//        //Draw Utility Things like Grid And CheckerBoard
+//        if(drawCheckerBoard){
+//            drawCheckerBoard();
+//        }
+//
 //        if(showGrid){
 //            drawGridLines();
 //        }
 //
-//        drawMap(tiles);
+//
 //    }
 
     public Canvas getCanvas() {
@@ -168,7 +184,15 @@ public class CanvasRenderer {
     }
 
 
+    public void setDrawCheckerBoard(boolean check){
+        if(check){
+            drawCheckerBoard = true;
+        }else
+        {
+            drawCheckerBoard = false;
+        }
 
+    }
 
 
 
