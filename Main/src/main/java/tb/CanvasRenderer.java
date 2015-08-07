@@ -21,7 +21,7 @@ public class CanvasRenderer {
     private int tileWidth = 0;
     private int tileHeight = 0;
 
-    int[][] tiles; //Array that holds the tiles
+    int[][][] tiles; //Array that holds the tiles
 
 
 //    private int defaultTileWidth = 32;
@@ -65,8 +65,8 @@ public class CanvasRenderer {
         this.canvas = new Canvas(width * tileWidth, height * tileHeight);
         this.gc = canvas.getGraphicsContext2D();
 
-        tiles = new int[width][height];
-        clearTiles(tiles);
+        tiles = new int[width][height][2];
+        //clearTiles(tiles);
 
 
 
@@ -140,6 +140,7 @@ public class CanvasRenderer {
 
     public void drawImage(double X, double Y){
         gc.drawImage(testTile.getImage(),((X*tileWidth) - testTile.getImageWidth()) + tileWidth,((Y*tileHeight) - testTile.getImageHeight() +tileHeight));
+        updateGraphics();
 
     }
 
@@ -148,28 +149,29 @@ public class CanvasRenderer {
 
     }
 
-//    public void updateGraphics() {
-//
-//
-//        for(){
-//            for{
-//                for (){
-//
-//                }
-//            }
-//        }
-//
-//        //Draw Utility Things like Grid And CheckerBoard
-//        if(drawCheckerBoard){
-//            drawCheckerBoard();
-//        }
-//
-//        if(showGrid){
-//            drawGridLines();
-//        }
-//
-//
-//    }
+    public void updateGraphics() {
+        int y = 0;
+        int x = 0;
+        for(int Z = 0; Z < tiles[x][y][2]; Z++){
+            for(x = 0; x < tiles[width][y][Z]; x++){
+                for(y = 0; y < tiles[x][height][Z]; y++) {
+                    //Draw Image from the Array Here
+                    System.out.println("Drew Tile X:" + x + "Y: " +y + "Z: " + Z);
+                }
+            }
+        }
+
+        //Draw Utility Things like Grid And CheckerBoard
+        if(drawCheckerBoard){
+            drawCheckerBoard();
+        }
+
+        if(showGrid){
+            drawGridLines();
+        }
+
+
+    }
 
     public Canvas getCanvas() {
         return this.canvas;
