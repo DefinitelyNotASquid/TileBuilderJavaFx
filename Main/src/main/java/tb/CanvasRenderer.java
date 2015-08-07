@@ -44,7 +44,7 @@ public class CanvasRenderer {
     private Canvas canvas;
 
     GraphicsBank testBank = new GraphicsBank();
-    Tile testTile = new Tile(2, "tree.png","tree2","tree");
+    Tile testTile = new Tile(2, "tree2.png","tree2","tree");
 
 
     CanvasRenderer() {
@@ -139,7 +139,7 @@ public class CanvasRenderer {
 //    }
 
     public void drawImage(double X, double Y){
-        gc.drawImage(testTile.getImage(),X*tileWidth,Y*tileHeight);
+        gc.drawImage(testTile.getImage(),((X*tileWidth) - testTile.getImageWidth()) + tileWidth,((Y*tileHeight) - testTile.getImageHeight() +tileHeight));
 
     }
 
