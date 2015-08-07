@@ -5,11 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.InputEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-
-import java.util.ArrayList;
 
 
 /**
@@ -24,6 +21,8 @@ public class CanvasRenderer {
     Image image1 = new Image("tree.png");
 
     GraphicsBank gb = new GraphicsBank();
+
+    Tile nullTile = new Tile(0, "null.png", "null tile", "null", "The tile that automatically populates the canvas");
 
 
     int[][][] tiles; //Array that holds the tiles
@@ -71,7 +70,9 @@ public class CanvasRenderer {
         this.gc = canvas.getGraphicsContext2D();
 
         tiles = new int[width][height][2];
-        //clearTiles(tiles);
+
+        initializeTileArray();
+        gb.add(nullTile);
 
 
 
@@ -79,15 +80,27 @@ public class CanvasRenderer {
         this.canvas.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                int tileX = (int)(Math.floor(event.getX() / tileWidth));
-                int tileY = (int)(Math.floor(event.getY() / tileHeight));
-                drawImage(1,tileX,tileY,1);
+                int tileX = (int) (Math.floor(event.getX() / tileWidth));
+                int tileY = (int) (Math.floor(event.getY() / tileHeight));
+                drawImage(1, tileX, tileY, 1);
                 System.out.println("X: " + tileX + ", Y:" + tileY);
 
             }
         });
 
     }
+
+    private void initializeTileArray() {
+        for(int x = 0; x < width; x++) {
+            for(int y = 0; y < height; y++) {
+                for(int l = 0; l < 2; l++) {
+                    tiles[x][y][l] = 0;
+                }
+            }
+        }
+    }
+
+
 
     public void drawCheckerBoard() {
         boolean flip = true;
