@@ -21,6 +21,11 @@ public class CanvasRenderer {
     private int tileWidth = 0;
     private int tileHeight = 0;
 
+    Image image1 = new Image("tree.png");
+
+    GraphicsBank gb = new GraphicsBank();
+
+
     int[][][] tiles; //Array that holds the tiles
 
 
@@ -161,7 +166,8 @@ public class CanvasRenderer {
             for(x = 0; x < width; x++){
                 for(y = 0; y < height; y++) {
                     tileToDraw = tiles[x][y][Z];
-                    System.out.println("Drew Tile X:" + x + " Y: " +y + " Z: " + Z);
+                    gc.drawImage(gb.getTile(tileToDraw).getImage(), x*tileWidth, y*tileHeight );
+                    System.out.println("Drew Tile X:" + x + " Y: " + y + " Z: " + Z);
                 }
             }
         }

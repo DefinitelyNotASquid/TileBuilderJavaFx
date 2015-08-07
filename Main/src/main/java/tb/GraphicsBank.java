@@ -1,6 +1,7 @@
 package tb;
 
 import javafx.geometry.Dimension2D;
+import javafx.scene.image.Image;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -296,6 +297,8 @@ public class GraphicsBank {
 
 
 
+
+
     /**
      * Add a GraphicsBankChangeListener to the graphics bank.
      * This listener will be notified whenever the tileset
@@ -351,6 +354,7 @@ public class GraphicsBank {
             l.tileRemoved(this, t);
         }
     }
+
 }
 
 
@@ -362,3 +366,4 @@ interface GraphicsBankChangeListener {
     /* A single tile was added */
     public void tileAdded(GraphicsBank bank, Tile added);
 }
+
